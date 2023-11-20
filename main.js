@@ -38,8 +38,21 @@ choices.forEach((choice, index) => {
   });
 });
 
+const submit = document.querySelector("#submit");
+  submit.addEventListener("click",function(event){
+  event.preventDefault();
+  console.log("prevent default")
+  document.querySelector(".leader").classList.toggle("hidden");
+  console.log("form hidden toggled");
+  document.getElementById("leaderboard").classList.toggle("hidden");
+  console.log("leaderboard hidden toggled");
+  removeClassHidden();
+  console.log("conatiner hidden toggled");
+})
+
 function removeClassHidden() {
-  document.querySelector(".container").classList.toggle("hidden");
+  const container = document.querySelector(".container");
+  container.classList.toggle("hidden");
   console.log("toggle");
   startTimer.classList.add("hidden");
 }
@@ -104,8 +117,5 @@ function setTime() {
 
 function sendMessage() {
   timeEl.textContent = "Quiz complete";
-  let paragraphEl = document.createElement("p");
-  paragraphEl.innerHTML =
-    "<form><label for='name'>Name:</label><input type='text' id='name' name='name' value=''><br><br><input type='submit' value='Submit'><form>";
-  mainEl.appendChild(paragraphEl);
+  document.querySelector(".leader").classList.toggle("hidden");  
 }

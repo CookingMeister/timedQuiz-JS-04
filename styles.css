@@ -78,3 +78,9 @@ form {
   margin: 2rem;
   padding: 2%;
 }
+
+#leaderboard {
+  height: 50vh;
+  background-color: beige;
+  border-radius: 8px;
+}

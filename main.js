@@ -27,15 +27,22 @@ let currentQuestion = 0;
 let correctAnswers = 0;
 let timerInterval;
 
-const startTimer = document
-  .querySelector(".start")
-  .addEventListener("click", setTime);
+const startTimer = document.querySelector(".start")
+  startTimer.addEventListener("click", setTime);
+  startTimer.addEventListener("click", removeClassHidden);
+  
 const choices = document.querySelectorAll(".choice");
 choices.forEach((choice, index) => {
   choice.addEventListener("click", () => {
     checkAnswer(index);
   });
 });
+
+function removeClassHidden() {
+  document.querySelector(".container").classList.toggle("hidden");
+  console.log("toggle");
+  startTimer.classList.add("hidden");
+}
 
 function showQuestion() {
   const questionText = document.getElementById("question-text");

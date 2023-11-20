@@ -28,9 +28,8 @@ h2 {
 .container {
   background-color: lightgray;
   padding-top: 2rem;
-  margin-top: -3%;
   max-width: 900px;
-  height: 50vh;
+  height:50vh;
 }
 
 #question-text {
@@ -57,8 +56,8 @@ h2 {
 }
 
 .start {
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-left: 0;
   padding: 1.5rem 1rem;
   border: 2px antiquewhite solid;
 }
@@ -66,6 +65,13 @@ h2 {
 .choice:hover,
 .start:hover {
   background-color: navy;
+}
+
+.hidden {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
 }
 
 form {

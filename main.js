@@ -87,8 +87,8 @@ function checkAnswer(index) {
     if (currentQuestion < qs.length) {
       showQuestion();
     } else {
-      const quizBox = document.querySelector(".quiz-box");
-      quizBox.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
+      const questionArea = document.querySelector(".questionArea");
+      questionArea.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
         `;
       clearInterval(timerInterval);
       sendMessage();

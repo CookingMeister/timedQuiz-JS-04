@@ -17,7 +17,7 @@ h2 {
 {
   /* box-sizing: border-box; */
   width: auto;
-  max-width: 650px;
+  max-width: 600px;
   margin: 0 auto;
   margin-top: 5%;
   padding: 2em;
@@ -31,7 +31,11 @@ h2 {
   background-color: lightgray;
   padding-top: 2rem;
   max-width: 800px;
-  height:50vh;
+  height:65vh;
+}
+
+.questionArea {
+  
 }
 
 #question-text {
@@ -76,15 +80,18 @@ h2 {
   display: none;
 }
 
-form {
+#form {
+  display: flex;
+  justify-content: center;
   margin: 2rem;
+  margin-left: 5rem;
   padding: 2%;
   width: auto;
   max-width: 65%;
 }
 
 #leaderboard {
-  height: 50vh;
+  height: 40vh;
   text-align: center;
   max-width: 60vw;
 }

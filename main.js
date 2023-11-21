@@ -40,6 +40,14 @@ choices.forEach((choice, index) => {
   });
 });
 const questionArea = document.querySelector(".questionArea");
+const inputField = document.querySelector('input[type="text"]');
+
+inputField.addEventListener('input', function() {
+  const inputText = inputField.value;
+  localStorage.setItem("initials", inputText);
+  localStorage.setItem("score", correctAnswers);
+
+});
 
 const submit = document.querySelector("#submit");
   submit.addEventListener("click",function(event){
@@ -51,6 +59,7 @@ const submit = document.querySelector("#submit");
   console.log("leaderboard hidden toggled");
   container.classList.add("none");
   console.log("conatiner hidden toggled");
+  getRoster();
 })
 
 // timer section
@@ -96,9 +105,11 @@ function showQuestion() {
 function checkAnswer(index) {
   const feedback = document.getElementById("feedback");
   if (index === qs[currentQuestion].correct) {
+    feedback.style.color = "red";
     feedback.innerHTML = "<em>--Correct!</em>";
     correctAnswers++;
   } else {
+    feedback.style.color = "red";
     feedback.innerHTML = "<em>--Incorrect!</em>";
     //     subtract time from timer
   }
@@ -109,6 +120,7 @@ function checkAnswer(index) {
     if (currentQuestion < qs.length) {
       showQuestion();
     } else {
+
       questionArea.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
         `;
       clearInterval(timerInterval);
@@ -120,4 +132,17 @@ function checkAnswer(index) {
 function sendMessage() {
   timeEl.textContent = "Quiz complete";
   document.querySelector(".leader").classList.toggle("hidden");  
+}
+
+function getRoster() {
+// Get a value from local storage
+const myInitials = localStorage.getItem("initials");
+console.log(myInitials);
+const  roster1= document.querySelector(".init");
+roster1.append(myInitials);
+const myScore = localStorage.getItem("score");
+const rosterScore = document.querySelector(".score-li");
+console.log(myScore);
+rosterScore.append(parseInt(myScore));
+
 }

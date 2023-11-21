@@ -1,8 +1,10 @@
 # timedQuiz-JS-04
 
+Test your knowledge of Javascript with this brief quiz.
+
 ## Usage
 
-This is a simple timed multiple choice quiz with answers verified and user score and initials displayed on a leaderboard, using HTML, CSS and JS.
+This is a simple timed multiple choice quiz with answers verified, time deducted for wrong answers and user score and initials displayed on a leaderboard - using HTML, CSS and JS.
 
 ## User Story
 
@@ -30,10 +32,12 @@ THEN I can save my initials and my score
 
 ## Mock-up
 
-![Start button to initiate timed quiz]().
+![Question with three multiple choice answers displayed as blue buttons]().
 [See the live application here](cookingmeister/github.io/timedQuiz-JS-04.html).
 
 ## Credits
+
+MDN Web Docs, W3Schools, and freeCodeAcademy were invaluable assets in completing this exercise.
 
 ## License
 

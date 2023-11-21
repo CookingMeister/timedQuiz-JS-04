@@ -39,6 +39,7 @@ choices.forEach((choice, index) => {
     checkAnswer(index);
   });
 });
+const questionArea = document.querySelector(".questionArea");
 
 const submit = document.querySelector("#submit");
   submit.addEventListener("click",function(event){
@@ -51,6 +52,27 @@ const submit = document.querySelector("#submit");
   container.classList.add("none");
   console.log("conatiner hidden toggled");
 })
+
+// timer section
+
+let timeEl = document.querySelector(".time");
+let mainEl = document.getElementById("main");
+let secondsLeft = 30;
+
+function setTime() {
+  timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left.";
+
+    if (secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      sendMessage();
+      questionArea.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
+        `;
+    }
+  }, 1000);
+}
 
 function removeClassHidden() {
   container.classList.toggle("hidden");
@@ -87,7 +109,6 @@ function checkAnswer(index) {
     if (currentQuestion < qs.length) {
       showQuestion();
     } else {
-      const questionArea = document.querySelector(".questionArea");
       questionArea.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
         `;
       clearInterval(timerInterval);
@@ -95,26 +116,6 @@ function checkAnswer(index) {
     }
   }, 2000);
 }
-
-// timer section starts
-
-let timeEl = document.querySelector(".time");
-let mainEl = document.getElementById("main");
-let secondsLeft = 30;
-
-function setTime() {
-  timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left.";
-
-    if (secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      sendMessage();
-    }
-  }, 1000);
-}
-// timer section ends
 
 function sendMessage() {
   timeEl.textContent = "Quiz complete";

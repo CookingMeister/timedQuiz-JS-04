@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-  
-    <button class="start">Start the quiz countdown</button>  
+    <button class="start">Start the quiz countdown</button>
     <section class="container hidden">
-      
       <h1>Javascript Quiz</h1>
       <h2 class="time"></h2>
       <div id="main">
@@ -28,25 +31,38 @@
             <p id="feedback"></p>
           </div>
         </div>
+        <section id="form" class="leader hidden">
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <label class="sr-only" for="inlineFormInput">Initials</label>
+                <input
+                  type="text"
+                  class="form-control mb-2 max-width-30"
+                  id="inlineFormInput"
+                  placeholder="JC"
+                />
+              </div>
+              <div class="col">
+                <button id="submit" class="btn btn-primary mb-2">Submit</button>
+              </div>
+            </div>
+          </form>
+        </section>
       </div>
     </section>
-    <section id="form container" class="leader hidden">
-      <form>
-        <div class="form-row align-items-center">
-          <div class="col">
-            <label class="sr-only" for="inlineFormInput">Initials</label>
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="JC">
-          </div>
-          <div class="col">
-            <button id="submit" class="btn btn-primary mb-2">Submit</button>
-          </div>
-        </div>
-      </form>
-    </section>
-    <section id="leaderboard" class="hidden">
-      <h3>I am the leaderboard. See me!</h3>
+
+    <section id="leaderboard" class="container hidden">
+      <h3 class="pb-2">I am the leaderboard.</h3>
+      <ul>
+        <li>name</li><li class="score-li">score</li><li>name</li><li class="score-li">score</li><li>name</li><li class="score-li">score</li>
+      </ul>
     </section>
     <script src="main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

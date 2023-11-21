@@ -1,6 +1,7 @@
 body {
+  box-sizing: border-box;
   background: linear-gradient(45deg, lightblue, royalblue);
-  height: 100vh;
+  height: 135vh;
 }
 
 h1,
@@ -12,10 +13,11 @@ h2 {
 }
 
 .quiz-box,
-.container {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 700px;
+.container
+{
+  /* box-sizing: border-box; */
+  width: auto;
+  max-width: 650px;
   margin: 0 auto;
   margin-top: 5%;
   padding: 2em;
@@ -28,7 +30,7 @@ h2 {
 .container {
   background-color: lightgray;
   padding-top: 2rem;
-  max-width: 900px;
+  max-width: 800px;
   height:50vh;
 }
 
@@ -56,8 +58,7 @@ h2 {
 }
 
 .start {
-  margin-top: 1rem;
-  margin-left: 0;
+  margin: 1rem;
   padding: 1.5rem 1rem;
   border: 2px antiquewhite solid;
 }
@@ -70,17 +71,28 @@ h2 {
 .hidden {
   visibility: hidden;
 }
-.visible {
-  visibility: visible;
+
+.none {
+  display: none;
 }
 
 form {
   margin: 2rem;
   padding: 2%;
+  width: auto;
+  max-width: 65%;
 }
 
 #leaderboard {
   height: 50vh;
-  background-color: beige;
-  border-radius: 8px;
+  text-align: center;
+  max-width: 60vw;
+}
+
+#leaderboard li {
+  text-align: left;
+}
+
+.score-li {
+  list-style: none;
 }

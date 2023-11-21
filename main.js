@@ -30,6 +30,8 @@ let timerInterval;
 const startTimer = document.querySelector(".start")
   startTimer.addEventListener("click", setTime);
   startTimer.addEventListener("click", removeClassHidden);
+
+const container = document.querySelector(".container");
   
 const choices = document.querySelectorAll(".choice");
 choices.forEach((choice, index) => {
@@ -42,19 +44,18 @@ const submit = document.querySelector("#submit");
   submit.addEventListener("click",function(event){
   event.preventDefault();
   console.log("prevent default")
-  document.querySelector(".leader").classList.toggle("hidden");
+  document.querySelector("#form").classList.toggle("hidden");
   console.log("form hidden toggled");
   document.getElementById("leaderboard").classList.toggle("hidden");
   console.log("leaderboard hidden toggled");
-  removeClassHidden();
+  container.classList.add("none");
   console.log("conatiner hidden toggled");
 })
 
 function removeClassHidden() {
-  const container = document.querySelector(".container");
   container.classList.toggle("hidden");
-  console.log("toggle");
-  startTimer.classList.add("hidden");
+  console.log("toggle container hidden, start hidden");
+  startTimer.classList.add("none");
 }
 
 function showQuestion() {

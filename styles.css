@@ -1,9 +1,15 @@
+/* Body styling */
 body {
   box-sizing: border-box;
   background: linear-gradient(45deg, lightblue, royalblue);
   height: 100vh;
 }
-
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+}
+/* Headings */
 h1,
 h2 {
   text-align: center;
@@ -11,7 +17,7 @@ h2 {
   margin: 2rem;
   display: inline;
 }
-
+/* Parent containers */
 .quiz-box,
 .container {
   width: auto;
@@ -31,7 +37,7 @@ h2 {
   max-width: 800px;
   min-height: 65vh;
 }
-
+/* Quiz questions */
 #question-text {
   margin-bottom: 3rem;
   text-align: center;
@@ -41,7 +47,7 @@ h2 {
   display: flex;
   justify-content: space-around;
 }
-
+/* buttons */
 .choice,
 .start {
   font-size: 1em;
@@ -59,12 +65,12 @@ h2 {
   padding: 1.5rem 1rem;
   border: 2px antiquewhite solid;
 }
-
+/* on hover */
 .choice:hover,
 .start:hover {
   background-color: navy;
 }
-
+/* Display hidden or none toggle classes */
 .hidden {
   visibility: hidden;
 }
@@ -73,6 +79,7 @@ h2 {
   display: none;
 }
 
+/* Form */
 #form {
   display: flex;
   justify-content: center;
@@ -82,7 +89,7 @@ h2 {
   width: auto;
   max-width: 65%;
 }
-
+/* Leaderboard */
 #leaderboard {
   min-height: 20vh;
   text-align: center;
@@ -91,7 +98,6 @@ h2 {
 
 #leaderboard li {
   text-align: left;
-  /* list-style: none; */
 }
 
 li {

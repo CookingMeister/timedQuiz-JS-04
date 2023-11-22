@@ -32,7 +32,7 @@ let correctAnswers = 0;
 let timerInterval;
 let timeEl = document.querySelector(".time");
 let mainEl = document.getElementById("main");
-let secondsLeft = 30;
+let secondsLeft = 35;
 
 const container = document.querySelector(".container");
 const questionArea = document.querySelector(".questionArea");
@@ -49,7 +49,13 @@ choices.forEach((choice, index) => {
   });
 });
 
-// Input listener to set local storage vars: initials & score
+// Leaderboard button
+const showLeader = document.getElementById("goLeaderboard");
+  showLeader.addEventListener("click", function(){
+    document.getElementById("leaderboard").classList.toggle("none");
+  })
+
+// Event listener at input to set local storage object myStats
 const inputField = document.querySelector('input[type="text"]');
 inputField.addEventListener('input', function() {
   const myStats = {
@@ -59,7 +65,7 @@ inputField.addEventListener('input', function() {
   localStorage.setItem("myStats", JSON.stringify(myStats));
 });
 
-// timer section
+// Timer section
 
 function setTime() {
   timerInterval = setInterval(function () {
@@ -75,7 +81,7 @@ function setTime() {
     }
   }, 1000);
 }
-// reveals quiz questions container
+// Reveals quiz questions container
 
 function removeClassNone() {
   container.classList.toggle("none");
@@ -152,15 +158,6 @@ const submit = document.querySelector("#submit");
 
 function getRoster() {
 // Get a value from local storage
-
-// const myInitials = localStorage.getItem("initials");
-// console.log(myInitials);
-// const  roster1= document.querySelector(".init");
-// roster1.append(`Init: ${myInitials}`);
-// const myScore = localStorage.getItem("score");
-// const rosterScore = document.querySelector(".score-li");
-// console.log(myScore);
-// rosterScore.append("Score: " + parseInt(myScore));
   const showStats = JSON.parse(localStorage.getItem("myStats"));
   const roster = document.querySelector(".init");
   roster.textContent = showStats.initials + " received a " + showStats.score;
@@ -173,12 +170,3 @@ const restart = document.querySelector(".restart");
   restart.addEventListener("click",function() {
     document.location.reload();
   });
-
-
-
-  const toggle = document.querySelector(".toggle");
-toggle.addEventListener("click", toggleHidden);
-function toggleHidden() {
-  console.log("clicked");
-  container.classList.toggle("none");
-}

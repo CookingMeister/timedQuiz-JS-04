@@ -107,7 +107,11 @@ function checkAnswer(index) {
   } else {
     feedback.style.color = "red";
     feedback.innerHTML = "<em>--Incorrect!</em>";
-    //     subtract time from timer
+    //  subtract time from timer on wrong answer
+     function subtract() {
+      secondsLeft-=5;
+    }
+    subtract();
   }
   // timed interval to load next question
   setTimeout(() => {

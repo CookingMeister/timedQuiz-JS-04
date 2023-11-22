@@ -15,19 +15,19 @@
   <body>
     <button class="start">Start the JS Quiz countdown</button>
     <button class="btn btn-primary toggle">toggle</button>
-    <section class="container none">
+    <section class="container container-fluid none">
       <h1>Javascript Quiz</h1>
       <h2 class="time"></h2>
       <div id="main">
-        <div class="quiz-box">
+        <div class="quiz-box container-fluid">
           <div class="questionArea">
             <p id="question-text">
               1. What is a 'named storage' for any piece of data?
             </p>
             <div class="choices">
-              <button class="choice">Bucket</button>
-              <button class="choice">Variable</button>
-              <button class="choice">Placeholder</button>
+              <button class="btn btn-primary choice">Bucket</button>
+              <button class="btn btn-primary choice">Variable</button>
+              <button class="btn btn-primary choice">Placeholder</button>
             </div>
             <p id="feedback"></p>
           </div>
@@ -35,7 +35,9 @@
             <form>
               <div class="form-row">
                 <div class="col">
-                  <label class="sr-only" for="inlineFormInput">Please enter your Initials</label>
+                  <label class="sr-only" for="inlineFormInput"
+                    >Please enter your Initials</label
+                  >
                   <input
                     type="text"
                     class="form-control mb-2 max-width-30"
@@ -55,15 +57,15 @@
       </div>
     </section>
 
-    <section id="leaderboard" class="container none">
+    <section id="leaderboard" class="container container-fluid none">
       <h3 class="pb-2">High Scores Leaderboard</h3>
       <ul id="leaderboard-list">
         <li class="init"></li>
-        <li class="score-li"></li><hr>
+        <li class="score-li"></li>        
         <li class="init"></li>
-        <li class="score-li"></li><hr>
+        <li class="score-li"></li>        
         <li class="init"></li>
-        <li class="score-li"></li><hr>
+        <li class="score-li"></li>
       </ul>
       <button class="btn btn-primary restart">Restart</button>
     </section>

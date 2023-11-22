@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
   background: linear-gradient(45deg, lightblue, royalblue);
-  height: 135vh;
+  height: 100vh;
 }
 
 h1,
@@ -13,9 +13,7 @@ h2 {
 }
 
 .quiz-box,
-.container
-{
-  /* box-sizing: border-box; */
+.container {
   width: auto;
   max-width: 600px;
   margin: 0 auto;
@@ -31,11 +29,7 @@ h2 {
   background-color: lightgray;
   padding-top: 2rem;
   max-width: 800px;
-  height:65vh;
-}
-
-.questionArea {
-  
+  min-height: 65vh;
 }
 
 #question-text {
@@ -90,17 +84,13 @@ h2 {
 }
 
 #leaderboard {
-  height: 40vh;
+  min-height: 20vh;
   text-align: center;
   max-width: 60vw;
-
 }
 
 #leaderboard li {
   text-align: left;
-}
-
-.score-li {
   list-style: none;
 }
 
@@ -109,4 +99,9 @@ li {
   width: 20vw;
   margin-left: 1rem;
   padding-left: 1rem;
+  border-radius: 3px;
+}
+
+#leaderboard .btn {
+  margin-top: 1rem;
 }

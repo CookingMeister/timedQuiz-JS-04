@@ -1,3 +1,5 @@
+// Questions object array
+
 const qs = [
   {
     question: "1. What is a 'named storage' for any piece of data?",
@@ -23,25 +25,32 @@ const qs = [
   },
 ];
 
+// Variables declared and event listeners
+
 let currentQuestion = 0;
 let correctAnswers = 0;
 let timerInterval;
-
-const startTimer = document.querySelector(".start")
-  startTimer.addEventListener("click", setTime);
-  startTimer.addEventListener("click", removeClassHidden);
+let timeEl = document.querySelector(".time");
+let mainEl = document.getElementById("main");
+let secondsLeft = 30;
 
 const container = document.querySelector(".container");
-  
+const questionArea = document.querySelector(".questionArea");
+
+//  Start button
+const startTimer = document.querySelector(".start")
+  startTimer.addEventListener("click", setTime);
+  startTimer.addEventListener("click", removeClassNone);
+
 const choices = document.querySelectorAll(".choice");
 choices.forEach((choice, index) => {
   choice.addEventListener("click", () => {
     checkAnswer(index);
   });
 });
-const questionArea = document.querySelector(".questionArea");
-const inputField = document.querySelector('input[type="text"]');
 
+// Input listener to set local storage vars: initials & score
+const inputField = document.querySelector('input[type="text"]');
 inputField.addEventListener('input', function() {
   const inputText = inputField.value;
   localStorage.setItem("initials", inputText);
@@ -49,24 +58,7 @@ inputField.addEventListener('input', function() {
 
 });
 
-const submit = document.querySelector("#submit");
-  submit.addEventListener("click",function(event){
-  event.preventDefault();
-  console.log("prevent default")
-  document.querySelector("#form").classList.toggle("hidden");
-  console.log("form hidden toggled");
-  document.getElementById("leaderboard").classList.toggle("hidden");
-  console.log("leaderboard hidden toggled");
-  container.classList.add("none");
-  console.log("conatiner hidden toggled");
-  getRoster();
-})
-
 // timer section
-
-let timeEl = document.querySelector(".time");
-let mainEl = document.getElementById("main");
-let secondsLeft = 30;
 
 function setTime() {
   timerInterval = setInterval(function () {
@@ -82,12 +74,15 @@ function setTime() {
     }
   }, 1000);
 }
+// reveals quiz questions container
 
-function removeClassHidden() {
-  container.classList.toggle("hidden");
-  console.log("toggle container hidden, start hidden");
-  startTimer.classList.add("none");
+function removeClassNone() {
+  container.classList.toggle("none");
+  console.log("toggle container unhidden, start hidden");
+  startTimer.classList.toggle("none");
 }
+
+//  Show next question
 
 function showQuestion() {
   const questionText = document.getElementById("question-text");
@@ -101,6 +96,7 @@ function showQuestion() {
   const feedback = document.getElementById("feedback");
   feedback.textContent = ""; //  resets feedback
 }
+//  Checks whether answer is correct and calls next question or quiz complete message
 
 function checkAnswer(index) {
   const feedback = document.getElementById("feedback");
@@ -113,7 +109,7 @@ function checkAnswer(index) {
     feedback.innerHTML = "<em>--Incorrect!</em>";
     //     subtract time from timer
   }
-
+  // timed interval to load next question
   setTimeout(() => {
     currentQuestion++;
 
@@ -129,20 +125,51 @@ function checkAnswer(index) {
   }, 2000);
 }
 
+// Quiz complete message
+
 function sendMessage() {
   timeEl.textContent = "Quiz complete";
   document.querySelector(".leader").classList.toggle("hidden");  
 }
+
+//  Submit button actions
+
+const submit = document.querySelector("#submit");
+  submit.addEventListener("click",function(event){
+  event.preventDefault();
+  document.querySelector("#form").classList.toggle("none");
+  document.getElementById("leaderboard").classList.toggle("none");
+  container.classList.toggle("none");
+  getRoster();
+})
+
+// Leaderboard Scores Roster
 
 function getRoster() {
 // Get a value from local storage
 const myInitials = localStorage.getItem("initials");
 console.log(myInitials);
 const  roster1= document.querySelector(".init");
-roster1.append(myInitials);
+roster1.append(`Init: ${myInitials}`);
 const myScore = localStorage.getItem("score");
 const rosterScore = document.querySelector(".score-li");
 console.log(myScore);
-rosterScore.append(parseInt(myScore));
+rosterScore.append("Score: " + parseInt(myScore));
 
+}
+
+//  Restart quiz app
+
+const restart = document.querySelector(".restart");
+  restart.addEventListener("click",function() {
+    document.location.reload();
+  });
+
+
+
+  const toggle = document.querySelector(".toggle");
+toggle.addEventListener("click", toggleHidden);
+function toggleHidden() {
+  console.log("clicked");
+  container.classList.toggle("none");
 }

@@ -14,7 +14,8 @@
   </head>
   <body>
     <button class="start">Start the JS Quiz countdown</button>
-    <section class="container hidden">
+    <button class="btn btn-primary toggle">toggle</button>
+    <section class="container none">
       <h1>Javascript Quiz</h1>
       <h2 class="time"></h2>
       <div id="main">
@@ -54,16 +55,17 @@
       </div>
     </section>
 
-    <section id="leaderboard" class="container hidden">
+    <section id="leaderboard" class="container none">
       <h3 class="pb-2">High Scores Leaderboard</h3>
-      <ul>
+      <ul id="leaderboard-list">
         <li class="init"></li>
-        <li class="score-li"></li>
+        <li class="score-li"></li><hr>
         <li class="init"></li>
-        <li class="score-li"></li>
+        <li class="score-li"></li><hr>
         <li class="init"></li>
-        <li class="score-li"></li>
+        <li class="score-li"></li><hr>
       </ul>
+      <button class="btn btn-primary restart">Restart</button>
     </section>
     <script src="main.js"></script>
     <script

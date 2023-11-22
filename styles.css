@@ -51,7 +51,6 @@ h2 {
 .choice,
 .start {
   font-size: 1em;
-  display: block;
   padding: 0.5rem 2rem;
   margin-bottom: 1rem;
   background-color: royalblue;
@@ -94,6 +93,7 @@ h2 {
   height: 40vh;
   text-align: center;
   max-width: 60vw;
+
 }
 
 #leaderboard li {
@@ -102,4 +102,11 @@ h2 {
 
 .score-li {
   list-style: none;
+}
+
+li {
+  background-color: antiquewhite;
+  width: 20vw;
+  margin-left: 1rem;
+  padding-left: 1rem;
 }

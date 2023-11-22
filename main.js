@@ -52,10 +52,11 @@ choices.forEach((choice, index) => {
 // Input listener to set local storage vars: initials & score
 const inputField = document.querySelector('input[type="text"]');
 inputField.addEventListener('input', function() {
-  const inputText = inputField.value;
-  localStorage.setItem("initials", inputText);
-  localStorage.setItem("score", correctAnswers);
-
+  const myStats = {
+    initials: inputField.value,
+    score: correctAnswers
+  }
+  localStorage.setItem("myStats", JSON.stringify(myStats));
 });
 
 // timer section
@@ -151,14 +152,18 @@ const submit = document.querySelector("#submit");
 
 function getRoster() {
 // Get a value from local storage
-const myInitials = localStorage.getItem("initials");
-console.log(myInitials);
-const  roster1= document.querySelector(".init");
-roster1.append(`Init: ${myInitials}`);
-const myScore = localStorage.getItem("score");
-const rosterScore = document.querySelector(".score-li");
-console.log(myScore);
-rosterScore.append("Score: " + parseInt(myScore));
+
+// const myInitials = localStorage.getItem("initials");
+// console.log(myInitials);
+// const  roster1= document.querySelector(".init");
+// roster1.append(`Init: ${myInitials}`);
+// const myScore = localStorage.getItem("score");
+// const rosterScore = document.querySelector(".score-li");
+// console.log(myScore);
+// rosterScore.append("Score: " + parseInt(myScore));
+  const showStats = JSON.parse(localStorage.getItem("myStats"));
+  const roster = document.querySelector(".init");
+  roster.textContent = showStats.initials + " received a " + showStats.score;
 
 }
 

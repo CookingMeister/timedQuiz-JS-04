@@ -91,7 +91,7 @@ h2 {
 
 #leaderboard li {
   text-align: left;
-  list-style: none;
+  /* list-style: none; */
 }
 
 li {

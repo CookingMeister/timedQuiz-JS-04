@@ -116,11 +116,8 @@ function checkAnswer(index) {
     feedback.style.color = "red";
     feedback.innerHTML = "<em>--Incorrect!</em>";
     //  subtract time from timer on wrong answer
-    subtract();
-    function subtract() {
       secondsLeft -= 5;
     }
-  }
   // timed interval to load next question
   setTimeout(() => {
     currentQuestion++;
@@ -151,13 +148,13 @@ submit.addEventListener("click", function (event) {
   form.classList.toggle("hidden");
   container.classList.toggle("none");
   showLeaderB();
+  initials = inputField.value || "unknown";
   addHighScore(initials, correctAnswers);
 });
 
 // Event listener at input to
 
 inputField.addEventListener("input", () => {
-  // Retrieve high scores from local storage
   initials = inputField.value;
 });
 

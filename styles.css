@@ -16,6 +16,7 @@ h2 {
   padding: 2rem;
   margin: 2rem;
   display: inline;
+  font-size: 1.75rem !important;
 }
 /* Parent containers */
 .quiz-box,
@@ -82,7 +83,7 @@ h2 {
 /* Form */
 #form {
   margin: 2rem;
-  margin-left: 5rem;
+  margin-left: 4rem;
   padding: 2%;
   width: auto;
   max-width: 65%;
@@ -91,7 +92,7 @@ h2 {
 #leaderboard {
   min-height: 20vh;
   text-align: center;
-  max-width: 60vw;
+  max-width: 50vw;
 }
 
 #leaderboard li {
@@ -100,7 +101,7 @@ h2 {
 
 li {
   background-color: antiquewhite;
-  width: 20vw;
+  width: 75%;
   margin-left: 1rem;
   padding-left: 1rem;
   border-radius: 3px;
@@ -108,4 +109,27 @@ li {
 
 #leaderboard .btn {
   margin-top: 1rem;
+}
+@media only screen and (max-width: 766px) {
+  body {
+    font-size: 12px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-size: 18px !important;
+    display: block;
+    padding: 0;
+  } 
+  .start {
+    transform: scale(.72);
+  }
+  li {
+    font-size: 12px;
+    padding-left: .5rem;
+    margin: 0;
+  }
+  #leaderboard {
+    max-width: 75vw;
+  }
 }

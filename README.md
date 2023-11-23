@@ -36,7 +36,7 @@ Here is an image showing the appearance of the application:
 
 ![Question with three multiple choice answers displayed as blue buttons](./img/Screenshot.png)
 
-* [See the live application here](cookingmeister/github.io/timedQuiz-JS-04.html).
+* [See the live application here](https://cookingmeister.github.io/timedQuiz-JS-04/).
 
 ## Credits
 

@@ -14,9 +14,9 @@
   </head>
   <body>
     <header class="container-fluid">
-    <button class="start">Start the JS Quiz countdown</button>
-    <button id="goLeaderboard" class="start">Show Leaderboard</button>
-  </header>
+      <button class="start">Start the JS Quiz countdown</button>
+      <button id="goLeaderboard" class="start">Show Leaderboard</button>
+    </header>
     <section class="container container-fluid none">
       <h1>Javascript Quiz</h1>
       <h2 class="time"></h2>
@@ -33,7 +33,7 @@
             </div>
             <p id="feedback"></p>
           </div>
-          <section id="form" class="leader hidden">
+          <section id="form" class="hidden">
             <form>
               <div class="form-row">
                 <div class="col">
@@ -42,7 +42,7 @@
                   >
                   <input
                     type="text"
-                    class="form-control mb-2 max-width-30"
+                    class="form-control mb-2"
                     id="inlineFormInput"
                     placeholder="JC"
                   />
@@ -62,9 +62,6 @@
     <section id="leaderboard" class="container container-fluid none">
       <h3 class="pb-2">High Scores Leaderboard</h3>
       <ol id="leaderboard-list">
-        <li class="init"></li>
-        <li class="init"></li>
-        <li class="init"></li>
       </ol>
       <button class="btn btn-primary restart">Restart</button>
     </section>

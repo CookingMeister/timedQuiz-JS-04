@@ -35,7 +35,7 @@ h2 {
   background-color: lightgray;
   padding-top: 2rem;
   max-width: 800px;
-  min-height: 65vh;
+  min-height: 50vh;
 }
 /* Quiz questions */
 #question-text {
@@ -72,7 +72,7 @@ h2 {
 }
 /* Display hidden or none toggle classes */
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .none {
@@ -81,8 +81,6 @@ h2 {
 
 /* Form */
 #form {
-  display: flex;
-  justify-content: center;
   margin: 2rem;
   margin-left: 5rem;
   padding: 2%;

@@ -25,7 +25,7 @@ const qs = [
   },
 ];
 
-// Variables declared and event listeners
+// Variables declared
 
 let currentQuestion = 0;
 let correctAnswers = 0;
@@ -33,59 +33,58 @@ let timerInterval;
 let timeEl = document.querySelector(".time");
 let mainEl = document.getElementById("main");
 let secondsLeft = 35;
-
+let highScores = JSON.parse(localStorage.getItem("Scores")) || [];
+let initials;
+const startTimer = document.querySelector(".start");
+const showLeader = document.getElementById("goLeaderboard");
 const container = document.querySelector(".container");
 const questionArea = document.querySelector(".questionArea");
+const choices = document.querySelectorAll(".choice");
+const feedback = document.getElementById("feedback");
+const form = document.getElementById("form");
+// const leaderInput = document.querySelector(".leader");
+const inputField = document.querySelector('input[type="text"]');
+const leaderboard = document.getElementById("leaderboard");
 
 //  Start button
-const startTimer = document.querySelector(".start")
-  startTimer.addEventListener("click", setTime);
-  startTimer.addEventListener("click", removeClassNone);
-
-const choices = document.querySelectorAll(".choice");
-choices.forEach((choice, index) => {
-  choice.addEventListener("click", () => {
-    checkAnswer(index);
-  });
-});
+startTimer.addEventListener("click", setTime);
+startTimer.addEventListener("click", firstReveal);
 
 // Leaderboard button
-const showLeader = document.getElementById("goLeaderboard");
-  showLeader.addEventListener("click", function(){
-    document.getElementById("leaderboard").classList.toggle("none");
-  })
+showLeader.addEventListener("click", showLeaderB);
 
-// Event listener at input to set local storage object myStats
-const inputField = document.querySelector('input[type="text"]');
-inputField.addEventListener('input', function() {
-  const myStats = {
-    initials: inputField.value,
-    score: correctAnswers
+function showLeaderB() {
+  if (leaderboard.classList.contains("none")) {
+    leaderboard.classList.toggle("none");
+    updateLeaderboard();
+  } else {
+    updateLeaderboard();
   }
-  localStorage.setItem("myStats", JSON.stringify(myStats));
-});
+}
 
 // Timer section
 
 function setTime() {
-  timerInterval = setInterval(function () {
+  timerInterval = setInterval(() => {
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left.";
-
-    if (secondsLeft === 0) {
+    if (secondsLeft === 0 || secondsLeft < 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       sendMessage();
       questionArea.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
         `;
+    } else if (secondsLeft > 1) {
+      timeEl.textContent = secondsLeft + " seconds left.";
+    } else {
+      timeEl.textContent = secondsLeft + " second left.";
     }
   }, 1000);
 }
+
 // Reveals quiz questions container
 
-function removeClassNone() {
+function firstReveal() {
   container.classList.toggle("none");
-  console.log("toggle container unhidden, start hidden");
   startTimer.classList.toggle("none");
 }
 
@@ -94,19 +93,21 @@ function removeClassNone() {
 function showQuestion() {
   const questionText = document.getElementById("question-text");
   questionText.textContent = qs[currentQuestion].question;
-
-  const choices = document.querySelectorAll(".choice");
   choices.forEach((choice, index) => {
     choice.textContent = qs[currentQuestion].choices[index];
   });
-
-  const feedback = document.getElementById("feedback");
   feedback.textContent = ""; //  resets feedback
 }
+
 //  Checks whether answer is correct and calls next question or quiz complete message
 
+choices.forEach((choice, index) => {
+  choice.addEventListener("click", () => {
+    checkAnswer(index);
+  });
+});
+
 function checkAnswer(index) {
-  const feedback = document.getElementById("feedback");
   if (index === qs[currentQuestion].correct) {
     feedback.style.color = "red";
     feedback.innerHTML = "<em>--Correct!</em>";
@@ -115,10 +116,10 @@ function checkAnswer(index) {
     feedback.style.color = "red";
     feedback.innerHTML = "<em>--Incorrect!</em>";
     //  subtract time from timer on wrong answer
-     function subtract() {
-      secondsLeft-=5;
-    }
     subtract();
+    function subtract() {
+      secondsLeft -= 5;
+    }
   }
   // timed interval to load next question
   setTimeout(() => {
@@ -127,7 +128,6 @@ function checkAnswer(index) {
     if (currentQuestion < qs.length) {
       showQuestion();
     } else {
-
       questionArea.innerHTML = `<p>You got <strong>${correctAnswers}</strong> out of <strong>${qs.length}</strong> questions right.</p>
         `;
       clearInterval(timerInterval);
@@ -140,33 +140,51 @@ function checkAnswer(index) {
 
 function sendMessage() {
   timeEl.textContent = "Quiz complete";
-  document.querySelector(".leader").classList.toggle("hidden");  
+  form.classList.toggle("hidden");
 }
 
 //  Submit button actions
 
 const submit = document.querySelector("#submit");
-  submit.addEventListener("click",function(event){
+submit.addEventListener("click", function (event) {
   event.preventDefault();
-  document.querySelector("#form").classList.toggle("none");
-  document.getElementById("leaderboard").classList.toggle("none");
+  form.classList.toggle("hidden");
   container.classList.toggle("none");
-  getRoster();
-})
+  showLeaderB();
+  addHighScore(initials, correctAnswers);
+});
 
-// Leaderboard Scores Roster
+// Event listener at input to
 
-function getRoster() {
-// Get a value from local storage
-  const showStats = JSON.parse(localStorage.getItem("myStats"));
-  const roster = document.querySelector(".init");
-  roster.textContent = showStats.initials + " received a " + showStats.score;
+inputField.addEventListener("input", () => {
+  // Retrieve high scores from local storage
+  initials = inputField.value;
+});
 
+// Function to add a new high score as local storage object array Scores
+function addHighScore(name, score) {
+  highScores.push({ name, score });
+  // Update local storage
+  localStorage.setItem("Scores", JSON.stringify(highScores));
+  updateLeaderboard();
+}
+
+// Update the leaderboard
+function updateLeaderboard() {
+  highScores.sort((a, b) => b.score - a.score);
+  const leaderboardList = document.getElementById("leaderboard-list");
+  leaderboardList.innerHTML = ""; // Clear previous entries
+
+  highScores.slice(0, 3).forEach((score, index) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${score.name}: got a ${score.score}`;
+    leaderboardList.appendChild(listItem);
+  });
 }
 
 //  Restart quiz app
 
 const restart = document.querySelector(".restart");
-  restart.addEventListener("click",function() {
-    document.location.reload();
-  });
+restart.addEventListener("click", function () {
+  document.location.reload();
+});

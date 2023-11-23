@@ -32,12 +32,15 @@ THEN I can save my initials and my score
 
 ## Mock-up
 
-![Question with three multiple choice answers displayed as blue buttons]().
-[See the live application here](cookingmeister/github.io/timedQuiz-JS-04.html).
+Here is an image showing the appearance of the application:
+
+![Question with three multiple choice answers displayed as blue buttons](./img/Screenshot.png)
+
+* [See the live application here](cookingmeister/github.io/timedQuiz-JS-04.html).
 
 ## Credits
 
-MDN Web Docs, W3Schools, and freeCodeAcademy were invaluable assets in completing this exercise.
+MDN Web Docs, W3Schools, and freeCodeAcademy were invaluable assets in completing this exercise, especially for the leaderboard section.
 
 ## License
 

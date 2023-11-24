@@ -43,6 +43,7 @@ const choices = document.querySelectorAll(".choice");
 const feedback = document.getElementById("feedback");
 const form = document.getElementById("form");
 const inputField = document.querySelector('input[type="text"]');
+const submit = document.querySelector("#submit");
 const leaderboard = document.getElementById("leaderboard");
 
 //  Start button
@@ -80,7 +81,7 @@ function setTime() {
   }, 1000);
 }
 
-// Reveals quiz questions container
+// Reveals quiz questions
 
 function firstReveal() {
   container.classList.toggle("none");
@@ -98,7 +99,7 @@ function showQuestion() {
   feedback.textContent = ""; //  resets feedback
 }
 
-//  Checks whether answer is correct and calls next question or quiz complete message
+//  Checks answers
 
 choices.forEach((choice, index) => {
   choice.addEventListener("click", () => {
@@ -109,6 +110,8 @@ choices.forEach((choice, index) => {
     });
   });
 });
+
+// Sends feedback on answer validity
 
 function checkAnswer(index) {
   if (index === qs[currentQuestion].correct) {
@@ -149,23 +152,23 @@ function sendMessage() {
 
 //  Submit button actions
 
-const submit = document.querySelector("#submit");
 submit.addEventListener("click", function (event) {
   event.preventDefault();
   form.classList.toggle("hidden");
   container.classList.toggle("none");
   showLeaderB();
-  initials = inputField.value || "unknown";
+  initials = inputField.value || "unknown"; // if no input user set to unknown
   addHighScore(initials, correctAnswers);
 });
 
-// Event listener at input to
+// form input for name
 
 inputField.addEventListener("input", () => {
   initials = inputField.value;
 });
 
-// Function to add a new high score as local storage object array Scores
+// add a new high score as local storage object array Scores
+
 function addHighScore(name, score) {
   highScores.push({ name, score });
   // Update local storage
@@ -174,19 +177,21 @@ function addHighScore(name, score) {
 }
 
 // Update the leaderboard
+
 function updateLeaderboard() {
-  highScores.sort((a, b) => b.score - a.score);
+  highScores.sort((a, b) => b.score - a.score); // sorts scores in descending order
   const leaderboardList = document.getElementById("leaderboard-list");
   leaderboardList.innerHTML = ""; // Clear previous entries
 
   highScores.slice(0, 3).forEach((score, index) => {
+    // shows top three scores from array
     const listItem = document.createElement("li");
     listItem.textContent = `${score.name}: got a ${score.score}`;
     leaderboardList.appendChild(listItem);
   });
 }
 
-//  Restart quiz app
+//  Restart quiz
 
 const restart = document.querySelector(".restart");
 restart.addEventListener("click", function () {

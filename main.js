@@ -42,7 +42,6 @@ const questionArea = document.querySelector(".questionArea");
 const choices = document.querySelectorAll(".choice");
 const feedback = document.getElementById("feedback");
 const form = document.getElementById("form");
-// const leaderInput = document.querySelector(".leader");
 const inputField = document.querySelector('input[type="text"]');
 const leaderboard = document.getElementById("leaderboard");
 
@@ -104,6 +103,10 @@ function showQuestion() {
 choices.forEach((choice, index) => {
   choice.addEventListener("click", () => {
     checkAnswer(index);
+    // disables all choice buttons once one is clicked
+    choices.forEach((choice) => {
+      choice.disabled = true;
+    });
   });
 });
 
@@ -116,8 +119,8 @@ function checkAnswer(index) {
     feedback.style.color = "red";
     feedback.innerHTML = "<em>--Incorrect!</em>";
     //  subtract time from timer on wrong answer
-      secondsLeft -= 5;
-    }
+    secondsLeft -= 5;
+  }
   // timed interval to load next question
   setTimeout(() => {
     currentQuestion++;
@@ -130,6 +133,10 @@ function checkAnswer(index) {
       clearInterval(timerInterval);
       sendMessage();
     }
+    // restores choice buttons
+    choices.forEach((choice) => {
+      choice.disabled = false;
+    });
   }, 2000);
 }
 
